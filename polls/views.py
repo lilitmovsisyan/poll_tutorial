@@ -16,19 +16,19 @@ def index(request):
     return HttpResponse("The latest questions are: %s" %string)
     """
     #3. view that uses a template, with the loader() function and .render() method. 
-
+    """
     latest_question_list = Question.objects.order_by('-pub_date')[:5]
     template = loader.get_template('polls/index.html')
     context = {
         'latest_question_list': latest_question_list,
     }
     return HttpResponse(template.render(context, request))
- 
+    """
+
     # view that makes use of a template and the render() shortcut
-"""
     latest_question_list = Question.objects.order_by('-pub_date')
     return render(request, 'polls/index.html', {'latest_question_list': latest_question_list})
-"""
+
     
 
 def detail(request, question_id):
